@@ -1,0 +1,8 @@
+
+  	Hola {{USERNAME}},
+
+
+    El Usuario {{USER_MODIFY}}  Modifico un producto
+
+
+    json:{{INFO}}}

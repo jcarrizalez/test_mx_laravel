@@ -1,0 +1,14 @@
+{
+	"id": "0ab9e7a1-06fc-4666-8468-e0e910ea3d8e",
+	"values": [
+		{
+			"key": "gw_auth_token",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnYXRld2F5IiwiaWF0IjoxNjE4OTYyODczLCJleHAiOjE2MTg5NjY0NzMsImNvbnRleHQiOm51bGwsImFwaV9rZXkiOiI5MDg4LTY5N0UiLCJhcGlfc2VjcmV0IjoiNWZkMmE3MTgxODI1NDQ1ZWFiZDVlZGZkZWUxMzQ1YmFhYjk0MmIyOTAyYzQyIiwiYXBpX3ZlcnNpb24iOiI3LjAiLCJkZXZpY2UiOiJwYyIsImlwIjoiMTgxLjI5LjM3LjExMCIsImNvdW50cnkiOiJBcmdlbnRpbmEiLCJjb3VudHJ5X2NvZGUiOiJBUiIsImNvdW50cnlfY2xpZW50IjoiQXJnZW50aW5hIiwiY291bnRyeV9hY3RpdmUiOnRydWUsInZlcnRpY2FsIjpudWxsLCJvcGVyYXRvciI6IlF1Yml0Iiwib3BlcmF0b3JfY29kZSI6IlFVQklUQVIiLCJvcGVyYXRvcl9pZCI6MSwiYmFzZV91cmwiOiJodHRwOlwvXC9xdWJpdGFyZ2VudGluYS5xYnN0LmNvbS5hclwvIiwibG9naW5oYXNoIjpudWxsLCJ1c2VyX2lkIjpudWxsLCJwcm9maWxlX2lkIjpudWxsLCJ1c2VybmFtZSI6bnVsbCwiY29udGVudF9yZXN0cmljdGlvbiI6bnVsbCwic2Vzc2lvbl90b2tlbiI6bnVsbCwibG9nZ2VkIjpudWxsLCJzdWJzY3JpcHRpb25fYWN0aXZlIjpudWxsfQ.QoioTYloyVlBTouDjNgNn32wsznlDftMO4swWrPDDe0",
+			"enabled": true
+		}
+	],
+	"name": "Team Workspace Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2021-08-09T14:55:48.014Z",
+	"_postman_exported_using": "Postman/8.9.1"
+}

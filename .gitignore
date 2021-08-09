@@ -1,0 +1,8 @@
+.environment*
+.env
+.git-credentials
+composer.lock
+#bootstrap/cache/*
+files_ignore_develop/*
+vendor/*
+storage/*

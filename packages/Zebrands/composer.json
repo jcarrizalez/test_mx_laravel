@@ -1,0 +1,22 @@
+{
+    "name": "qubit/sas-core",
+    "description": "Core utilities and classes incl. Context management",
+    "type": "php",
+    "authors": [
+        {
+            "name": "Juan Carrizalez",
+            "email": "jcarrizalez@qubit.tv"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        
+        "psr-4": {
+            "Zebrands\\": "src/"
+        }
+    }
+}
+/*
+"ACME\\App\\Site\\": ["app/", "src/ACME/app"],
+            "ACME\\App\\": "src/ACME/app/"
+            */

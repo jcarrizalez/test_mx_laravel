@@ -1,0 +1,1097 @@
+{
+	"info": {
+		"_postman_id": "6799b9a9-cd5a-4e09-b94e-d5a4bf2fa835",
+		"name": "TestJcarrizalez",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Zebrands",
+			"item": [
+				{
+					"name": "Authorize",
+					"item": [
+						{
+							"name": "Authorize with valid application",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var json = pm.response.json();",
+											"",
+											"pm.test(\"Success response received\", function() {",
+											"    pm.response.to.have.status(200); ",
+											"});",
+											"",
+											"pm.test(\"Response includes status parameter and is success\", function() {",
+											"   pm.expect(json.status).to.be.eql('success');",
+											"});",
+											"",
+											"postman.setGlobalVariable('gw_auth_token', json.data.token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "api_key",
+											"value": "9088-697E",
+											"type": "text"
+										},
+										{
+											"key": "api_secret",
+											"value": "5fd2a7181825445eabd5edfdee1345baab942b2902c42",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{gw_url}}:{{gw_port}}/auth",
+									"host": [
+										"{{gw_url}}"
+									],
+									"port": "{{gw_port}}",
+									"path": [
+										"auth"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Ping - Stay Alive",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Success response received\", function() {",
+											"    pm.response.to.have.status(200); ",
+											"});",
+											"",
+											"pm.test(\"Response includes status parameter and is success\", function() {",
+											"   var json = pm.response.json();",
+											"   console.log(json);",
+											"   pm.expect(json.status).to.be.eql('success');",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{{gw_auth_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{gw_url}}:{{gw_port}}/ping",
+									"host": [
+										"{{gw_url}}"
+									],
+									"port": "{{gw_port}}",
+									"path": [
+										"ping"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"item": [
+						{
+							"name": "Logout",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Success response received\", function() {",
+											"    pm.response.to.have.status(200); ",
+											"});",
+											"",
+											"pm.test(\"Response includes status parameter and is success\", function() {",
+											"   var json = pm.response.json();",
+											"   console.log(json);",
+											"   pm.expect(json.status).to.be.eql('success');",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{{gw_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{gw_url}}:{{gw_port}}/logout",
+									"host": [
+										"{{gw_url}}"
+									],
+									"port": "{{gw_port}}",
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Success response received\", function() {",
+											"    pm.response.to.have.status(200); ",
+											"});",
+											"",
+											"pm.test(\"Response includes status parameter and is success\", function() {",
+											"   var json = pm.response.json();",
+											"   console.log(json);",
+											"   pm.expect(json.status).to.be.eql('success');",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{{gw_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "username",
+											"value": "root",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123456",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{gw_url}}:{{gw_port}}/login",
+									"host": [
+										"{{gw_url}}"
+									],
+									"port": "{{gw_port}}",
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Brand",
+					"item": [
+						{
+							"name": "Create",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Success response received\", function() {",
+											"    pm.response.to.have.status(200); ",
+											"});",
+											"",
+											"pm.test(\"Response includes status parameter and is success\", function() {",
+											"   var json = pm.response.json();",
+											"   console.log(json);",
+											"   pm.expect(json.status).to.be.eql('success');",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{{gw_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "NIKE",
+											"description": "requiered",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "producto tipo ropa",
+											"description": "no_requiered",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{gw_url}}:{{gw_port}}/brands",
+									"host": [
+										"{{gw_url}}"
+									],
+									"port": "{{gw_port}}",
+									"path": [
+										"brands"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ALL",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Success response received\", function() {",
+											"    pm.response.to.have.status(200); ",
+											"});",
+											"",
+											"pm.test(\"Response includes status parameter and is success\", function() {",
+											"   var json = pm.response.json();",
+											"   console.log(json);",
+											"   pm.expect(json.status).to.be.eql('success');",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{{gw_auth_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{gw_url}}:{{gw_port}}/brands?page=1&count=10",
+									"host": [
+										"{{gw_url}}"
+									],
+									"port": "{{gw_port}}",
+									"path": [
+										"brands"
+									],
+									"query": [
+										{
+											"key": "filter",
+											"value": "nike",
+											"description": "no_requiered",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "1",
+											"description": "no_requiered"
+										},
+										{
+											"key": "count",
+											"value": "10",
+											"description": "no_requiered"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ById",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Success response received\", function() {",
+											"    pm.response.to.have.status(200); ",
+											"});",
+											"",
+											"pm.test(\"Response includes status parameter and is success\", function() {",
+											"   var json = pm.response.json();",
+											"   console.log(json);",
+											"   pm.expect(json.status).to.be.eql('success');",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{{gw_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{gw_url}}:{{gw_port}}/brands/1",
+									"host": [
+										"{{gw_url}}"
+									],
+									"port": "{{gw_port}}",
+									"path": [
+										"brands",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Success response received\", function() {",
+											"    pm.response.to.have.status(200); ",
+											"});",
+											"",
+											"pm.test(\"Response includes status parameter and is success\", function() {",
+											"   var json = pm.response.json();",
+											"   console.log(json);",
+											"   pm.expect(json.status).to.be.eql('success');",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{{gw_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "ADDIDAS",
+											"description": "requiered",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "producto",
+											"description": "no_requiered",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{gw_url}}:{{gw_port}}/brands/1",
+									"host": [
+										"{{gw_url}}"
+									],
+									"port": "{{gw_port}}",
+									"path": [
+										"brands",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "Create",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Success response received\", function() {",
+											"    pm.response.to.have.status(200); ",
+											"});",
+											"",
+											"pm.test(\"Response includes status parameter and is success\", function() {",
+											"   var json = pm.response.json();",
+											"   console.log(json);",
+											"   pm.expect(json.status).to.be.eql('success');",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{{gw_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Juan manuel",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "sitgem@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123456",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "123456",
+											"type": "text"
+										},
+										{
+											"key": "type_user_id",
+											"value": "2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{gw_url}}:{{gw_port}}/users",
+									"host": [
+										"{{gw_url}}"
+									],
+									"port": "{{gw_port}}",
+									"path": [
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ALL",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Success response received\", function() {",
+											"    pm.response.to.have.status(200); ",
+											"});",
+											"",
+											"pm.test(\"Response includes status parameter and is success\", function() {",
+											"   var json = pm.response.json();",
+											"   console.log(json);",
+											"   pm.expect(json.status).to.be.eql('success');",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{{gw_auth_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{gw_url}}:{{gw_port}}/users?page=1&count=10",
+									"host": [
+										"{{gw_url}}"
+									],
+									"port": "{{gw_port}}",
+									"path": [
+										"users"
+									],
+									"query": [
+										{
+											"key": "filter",
+											"value": "admin",
+											"description": "DEFAULT NULL O ''",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "count",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ById",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Success response received\", function() {",
+											"    pm.response.to.have.status(200); ",
+											"});",
+											"",
+											"pm.test(\"Response includes status parameter and is success\", function() {",
+											"   var json = pm.response.json();",
+											"   console.log(json);",
+											"   pm.expect(json.status).to.be.eql('success');",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{{gw_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{gw_url}}:{{gw_port}}/users/1",
+									"host": [
+										"{{gw_url}}"
+									],
+									"port": "{{gw_port}}",
+									"path": [
+										"users",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Success response received\", function() {",
+											"    pm.response.to.have.status(200); ",
+											"});",
+											"",
+											"pm.test(\"Response includes status parameter and is success\", function() {",
+											"   var json = pm.response.json();",
+											"   console.log(json);",
+											"   pm.expect(json.status).to.be.eql('success');",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{{gw_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Otro Users",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "type_user_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123456",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "123456",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{gw_url}}:{{gw_port}}/users/2",
+									"host": [
+										"{{gw_url}}"
+									],
+									"port": "{{gw_port}}",
+									"path": [
+										"users",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Product",
+					"item": [
+						{
+							"name": "Create",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Success response received\", function() {",
+											"    pm.response.to.have.status(200); ",
+											"});",
+											"",
+											"pm.test(\"Response includes status parameter and is success\", function() {",
+											"   var json = pm.response.json();",
+											"   console.log(json);",
+											"   pm.expect(json.status).to.be.eql('success');",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{{gw_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "remera",
+											"description": "requiered",
+											"type": "text"
+										},
+										{
+											"key": "country_id",
+											"value": "1",
+											"description": "requiered",
+											"type": "text"
+										},
+										{
+											"key": "brand_id",
+											"value": "1",
+											"description": "requiered",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "",
+											"description": "no_requiered",
+											"type": "text"
+										},
+										{
+											"key": "color",
+											"value": "azul",
+											"description": "no_requiered",
+											"type": "text"
+										},
+										{
+											"key": "stock",
+											"value": "",
+											"description": "no_requiered",
+											"type": "text"
+										},
+										{
+											"key": "code",
+											"value": "9008776",
+											"description": "requiered",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{gw_url}}:{{gw_port}}/products",
+									"host": [
+										"{{gw_url}}"
+									],
+									"port": "{{gw_port}}",
+									"path": [
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ALL",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Success response received\", function() {",
+											"    pm.response.to.have.status(200); ",
+											"});",
+											"",
+											"pm.test(\"Response includes status parameter and is success\", function() {",
+											"   var json = pm.response.json();",
+											"   console.log(json);",
+											"   pm.expect(json.status).to.be.eql('success');",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{{gw_auth_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{gw_url}}:{{gw_port}}/products?page=1&count=10",
+									"host": [
+										"{{gw_url}}"
+									],
+									"port": "{{gw_port}}",
+									"path": [
+										"products"
+									],
+									"query": [
+										{
+											"key": "filter",
+											"value": "00000055423e4",
+											"description": "DEFAULT NULL O ''",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "count",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ById",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Success response received\", function() {",
+											"    pm.response.to.have.status(200); ",
+											"});",
+											"",
+											"pm.test(\"Response includes status parameter and is success\", function() {",
+											"   var json = pm.response.json();",
+											"   console.log(json);",
+											"   pm.expect(json.status).to.be.eql('success');",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{{gw_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{gw_url}}:{{gw_port}}/products/1",
+									"host": [
+										"{{gw_url}}"
+									],
+									"port": "{{gw_port}}",
+									"path": [
+										"products",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Success response received\", function() {",
+											"    pm.response.to.have.status(200); ",
+											"});",
+											"",
+											"pm.test(\"Response includes status parameter and is success\", function() {",
+											"   var json = pm.response.json();",
+											"   console.log(json);",
+											"   pm.expect(json.status).to.be.eql('success');",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{{gw_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "dddddd",
+											"type": "text"
+										},
+										{
+											"key": "country_id",
+											"value": "1",
+											"description": "requiered",
+											"type": "text"
+										},
+										{
+											"key": "brand_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "code",
+											"value": "464445543",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "color",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "stock",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "price",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{gw_url}}:{{gw_port}}/products/1",
+									"host": [
+										"{{gw_url}}"
+									],
+									"port": "{{gw_port}}",
+									"path": [
+										"products",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ById",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Success response received\", function() {",
+											"    pm.response.to.have.status(200); ",
+											"});",
+											"",
+											"pm.test(\"Response includes status parameter and is success\", function() {",
+											"   var json = pm.response.json();",
+											"   console.log(json);",
+											"   pm.expect(json.status).to.be.eql('success');",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{{gw_auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{gw_url}}:{{gw_port}}/products/1",
+									"host": [
+										"{{gw_url}}"
+									],
+									"port": "{{gw_port}}",
+									"path": [
+										"products",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Authorization header is present\", function () {",
+					"    pm.response.to.have.header(\"Authorization\");",
+					"    postman.setGlobalVariable('gw_auth_token', postman.getResponseHeader(\"Authorization\"));",
+					"});",
+					"",
+					""
+				]
+			}
+		}
+	]
+}

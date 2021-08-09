@@ -1,0 +1,89 @@
+version: '3.7'
+
+services:
+
+  #MySQL Service
+  zbdatabase:
+    image: mysql:5.7.22
+    container_name: zbdatabase
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "0:3306"
+    environment:
+      MYSQL_DATABASE: bd_zebrands
+      MYSQL_ROOT_PASSWORD: 123456
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - dbdata:/var/lib/mysql/
+      - ./docker-config/mysql/my.cnf:/etc/mysql/my.cnf
+    networks:
+      zebrands:
+        ipv4_address: 10.5.0.2
+
+  #MenCached
+  zbmemcached:
+    container_name: zbmemcached
+    image: memcached:latest
+    ports:
+        - "0:11211"
+    networks:
+      zebrands:
+        ipv4_address: 10.5.0.3
+
+  #Nginx Service
+  zbnginx:
+    image: nginx:alpine
+    container_name: zbnginx
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "9002:80"
+    volumes:
+      - ./:/var/www
+      - ./docker-config/nginx/conf.d/:/etc/nginx/conf.d/
+    networks:
+      zebrands:
+        ipv4_address: 10.5.0.4
+
+  #PHP Service
+  zblaravel:
+    #docker-compose build --no-cache zblaravel
+    build:
+      context: .
+      dockerfile: docker-config/zblaravel.Dockerfile
+    image: digitalocean.com/php:latest
+    container_name: zblaravel
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+      - ./docker-config/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    links:
+     - zbdatabase
+     - zbmemcached
+    depends_on:
+     - zbnginx
+     - zbdatabase
+     - zbmemcached
+    networks:
+      zebrands:
+        ipv4_address: 10.5.0.5
+
+#Volumes
+volumes:
+  dbdata:
+    driver: local
+
+#Docker Networks
+networks:
+  zebrands:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.5.0.0/16
