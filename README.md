@@ -40,6 +40,13 @@ $ php artisan migrate;
 $ php artisan db:seed; 
 ```
 
+## Usuario default para el login.
+Todos los usuarios a recrear deben ser email:rfc,dns, excepto este usuario root
+```bash
+username: root
+password: 123456
+```
+
 ## Execute - simple
 
 Define un puerto no usado
