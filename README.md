@@ -31,6 +31,9 @@ CREATE DATABASE bd_zebrands;
 ```
 
 ```bash
+$ composer install; 
+```
+```bash
 $ composer dumpautoload; 
 ```
 ```bash
