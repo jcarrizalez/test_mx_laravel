@@ -1,13 +1,13 @@
 ## Git
 ```bash
-git clone https://github.com/jcarrizalez/zebrands_laravel.git;
+git clone https://github.com/jcarrizalez/test_mx_laravel.git;
 ```
 
 ## Structure
 
 La aplicacion esta definida por packages 
 ```bash
-zebrands_laravel/
+test_mx_laravel/
 ├── packages/
 │ 	└── Zebrands/
 │        ├── ExampleOtroPaq/   <- no existe es un ejemplo
@@ -18,7 +18,7 @@ zebrands_laravel/
 ## Configuration
 Configura las vairiables d entorno a usar como database, mail entre otras.
 ```bash
-zebrands_laravel/
+test_mx_laravel/
 ├── .env
 ```
 
@@ -54,7 +54,7 @@ password: 123456
 
 Define un puerto no usado
 ```bash
-$ php -S localhost:8000 -t RUTA_ABSOLUTA/zebrands_laravel/public/
+$ php -S localhost:8000 -t RUTA_ABSOLUTA/test_mx_laravel/public/
 ```
 
 ## Via docker-compose, NO TERMINADO POR TIEMPO
